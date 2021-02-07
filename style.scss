@@ -1,5 +1,5 @@
 // SCSS Breakpoints Library
-@import "/breakpoints/breakpoints.scss";
+@import "./breakpoints/breakpoints.scss";
 
 // Font
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
@@ -12,4 +12,133 @@ $darkGray: hsl(0, 0%, 59%);
 
 :root {
   font-size: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+// Main Container (Body)
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $darkCyan;
+  color: $darkBlue;
+  font-family: "Kumbh Sans", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  // Circle Backgrounds
+  .circles {
+    img {
+      position: absolute;
+      animation: 2s circles forwards;
+    }
+    .c1 {
+      top: -520px;
+      left: -330px;
+      transform: translate(-50px, -50px);
+
+      @include media(">=phone", "<=tablet") {
+        width: 600px;
+        top: -350px;
+        left: -380px;
+      }
+    }
+    .c2 {
+      bottom: -670px;
+      right: -230px;
+      transform: translate(50px, 50px);
+
+      @include media(">=phone", "<=tablet") {
+        width: 600px;
+        bottom: -300px;
+        right: -410px;
+      }
+    }
+  }
+
+  // Card Container
+  .card {
+    background-color: white;
+    width: 370px;
+    border-radius: 15px;
+    text-align: center;
+    overflow: hidden;
+    z-index: 2;
+    margin: 1.3em;
+
+    // Header
+    .card-header {
+      background-image: url("/images/bg-pattern-card.svg");
+      height: 140px;
+    }
+
+    // Body
+    .card-body {
+      padding: 0px 20px 30px;
+      // Profile Picture
+      .img-container {
+        border-radius: 50%;
+        border: 5px solid white;
+        overflow: hidden;
+        width: 110px;
+        margin: -50px auto 30px auto;
+        img {
+          width: 100%;
+          display: block;
+        }
+      }
+      // Profile Info
+      .name-age {
+        font-weight: 700;
+        margin-bottom: 0.7em;
+        font-size: 1.1rem;
+        .age {
+          margin-left: 0.4em;
+          color: $grayishBlue;
+          font-weight: 400;
+        }
+      }
+      .city {
+        color: $grayishBlue;
+        font-weight: 400;
+        font-size: 0.9rem;
+      }
+    }
+
+    // Footer
+    .card-footer {
+      border-top: 1px solid hsl(0, 0%, 84%);
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100px;
+      // Meta Info
+      .item {
+        .value {
+          font-size: 1.1rem;
+          font-weight: 700;
+          margin-bottom: 0.5em;
+        }
+        .meta {
+          color: $grayishBlue;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+@keyframes circles {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
